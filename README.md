@@ -1,5 +1,10 @@
 # berry
 
+[![Build Status](https://github.com/sangupta/berry/actions/workflows/unittest.yml/badge.svg?branch=main)](https://github.com/sangupta/berry/actions)
+[![Code Coverage](https://codecov.io/gh/sangupta/berry/branch/main/graphs/badge.svg?branch=main)](https://codecov.io/gh/sangupta/berry)
+[![go.mod version](https://img.shields.io/github/go-mod/go-version/sangupta/berry.svg)](https://github.com/sangupta/berry)
+![GitHub](https://img.shields.io/github/license/sangupta/berry)
+
 Utility functions in Go.
 
 # Hacking
