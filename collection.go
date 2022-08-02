@@ -168,3 +168,19 @@ func AreSliceEqual[T comparable](slice1 []T, slice2 []T) bool {
 
 	return true
 }
+
+//
+// Reverse a slice and return the same. If the slice is `nil` or
+// has less than or equal to one element, no action is taken.
+//
+func SliceReverse[T comparable](slice []T) []T {
+	if slice == nil || len(slice) <= 1 {
+		return slice
+	}
+
+	for i := len(slice)/2 - 1; i >= 0; i-- {
+		pos := len(slice) - 1 - i
+		slice[i], slice[pos] = slice[pos], slice[i]
+	}
+	return slice
+}
