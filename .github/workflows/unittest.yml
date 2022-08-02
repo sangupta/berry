@@ -1,5 +1,9 @@
-name: test
-on: [push, pull_request]
+name: Build & Test
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 env:
   GOPROXY: https://proxy.golang.org,direct
@@ -21,10 +25,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Test
+      - name: Run unit tests
         run: go test ./... -v -coverprofile coverage.out
 
-      - name: Generate coverage report
+      - name: Generate code coverage report
         uses: codecov/codecov-action@v3
         with:
           files: ./coverage.out
