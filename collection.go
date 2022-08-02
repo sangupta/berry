@@ -133,9 +133,9 @@ func SliceIndex[T comparable](slice []T, element T) int {
 // updated in the slice at same index. The method has no effect
 // if the slice is `nil`.
 //
-func SliceModify[T comparable](slice []T, modifier func(item T) T) {
+func SliceModify[T comparable](slice []T, modifier func(item T) T) bool {
 	if slice == nil {
-		return
+		return false
 	}
 
 	for index := 0; index < len(slice); index++ {
@@ -143,6 +143,8 @@ func SliceModify[T comparable](slice []T, modifier func(item T) T) {
 		updated := modifier(val)
 		slice[index] = updated
 	}
+
+	return true
 }
 
 //
@@ -151,7 +153,7 @@ func SliceModify[T comparable](slice []T, modifier func(item T) T) {
 // the same index in slices are equal. If any of the slice is `nil`
 // will return a `false`.
 //
-func AreSliceEqual[T comparable](slice1 []T, slice2 []T) bool {
+func AreSlicesEqual[T comparable](slice1 []T, slice2 []T) bool {
 	if slice1 == nil || slice2 == nil {
 		return false
 	}

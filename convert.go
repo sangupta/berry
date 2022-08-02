@@ -12,9 +12,9 @@
 package berry
 
 import (
-	"errors"
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 //
@@ -30,17 +30,62 @@ func ConvertToBool(value interface{}) (bool, error) {
 	}
 
 	switch v := value.(type) {
-	case int, int8, int16, int32, int64:
-		return v != 0, nil
+	case int:
+		data, _ := value.(int)
+		return data != 0, nil
 
-	case uint, uint8, uint16, uint32, uint64:
-		return v != 0, nil
+	case int8:
+		data, _ := value.(int8)
+		return data != 0, nil
 
-	case float32, float64:
-		return v != 0, nil
+	case int16:
+		data, _ := value.(int16)
+		return data != 0, nil
+
+	case int32:
+		data, _ := value.(int32)
+		return data != 0, nil
+
+	case int64:
+		data, _ := value.(int64)
+		return data != 0, nil
+
+	case uint:
+		data, _ := value.(uint)
+		return data != 0, nil
+
+	case uint8:
+		data, _ := value.(uint8)
+		return data != 0, nil
+
+	case uint16:
+		data, _ := value.(uint16)
+		return data != 0, nil
+
+	case uint32:
+		data, _ := value.(uint32)
+		return data != 0, nil
+
+	case uint64:
+		data, _ := value.(uint64)
+		return data != 0, nil
+
+	case float32:
+		data, _ := value.(float32)
+		return data != 0, nil
+
+	case float64:
+		data, _ := value.(float64)
+		return data != 0, nil
 
 	case string:
-		return strconv.ParseBool(v)
+		v = strings.ToLower(strings.TrimSpace(v))
+		switch v {
+		case "1", "true", "t":
+			return true, nil
+		default:
+			return false, nil
+		}
 
 	case bool:
 		return v, nil
@@ -75,13 +120,53 @@ func ConvertToUint64(value interface{}, defaultValue uint64) (uint64, error) {
 	}
 
 	switch v := value.(type) {
-	case int, int8, int16, int32, int64,
-		uint, uint8, uint16, uint32, uint64,
-		float32, float64:
-		c, err := v.(uint64)
-		if err {
-			return c, errors.New("Unable to convert value to uint64")
-		}
+	case int:
+		data, _ := value.(int)
+		return uint64(data), nil
+
+	case int8:
+		data, _ := value.(int8)
+		return uint64(data), nil
+
+	case int16:
+		data, _ := value.(int16)
+		return uint64(data), nil
+
+	case int32:
+		data, _ := value.(int32)
+		return uint64(data), nil
+
+	case int64:
+		data, _ := value.(int64)
+		return uint64(data), nil
+
+	case uint:
+		data, _ := value.(uint)
+		return uint64(data), nil
+
+	case uint8:
+		data, _ := value.(uint8)
+		return uint64(data), nil
+
+	case uint16:
+		data, _ := value.(uint16)
+		return uint64(data), nil
+
+	case uint32:
+		data, _ := value.(uint32)
+		return uint64(data), nil
+
+	case uint64:
+		data, _ := value.(uint64)
+		return uint64(data), nil
+
+	case float32:
+		data, _ := value.(float32)
+		return uint64(data), nil
+
+	case float64:
+		data, _ := value.(float64)
+		return uint64(data), nil
 
 	case string:
 		return strconv.ParseUint(v, 10, 64)
@@ -104,13 +189,53 @@ func ConvertToInt64(value interface{}, defaultValue int64) (int64, error) {
 	}
 
 	switch v := value.(type) {
-	case int, int8, int16, int32, int64,
-		uint, uint8, uint16, uint32, uint64,
-		float32, float64:
-		c, ok := v.(int64)
-		if !ok {
-			return c, errors.New("Unable to convert value to int64")
-		}
+	case int:
+		data, _ := value.(int)
+		return int64(data), nil
+
+	case int8:
+		data, _ := value.(int8)
+		return int64(data), nil
+
+	case int16:
+		data, _ := value.(int16)
+		return int64(data), nil
+
+	case int32:
+		data, _ := value.(int32)
+		return int64(data), nil
+
+	case int64:
+		data, _ := value.(int64)
+		return int64(data), nil
+
+	case uint:
+		data, _ := value.(uint)
+		return int64(data), nil
+
+	case uint8:
+		data, _ := value.(uint8)
+		return int64(data), nil
+
+	case uint16:
+		data, _ := value.(uint16)
+		return int64(data), nil
+
+	case uint32:
+		data, _ := value.(uint32)
+		return int64(data), nil
+
+	case uint64:
+		data, _ := value.(uint64)
+		return int64(data), nil
+
+	case float32:
+		data, _ := value.(float32)
+		return int64(data), nil
+
+	case float64:
+		data, _ := value.(float64)
+		return int64(data), nil
 
 	case string:
 		return strconv.ParseInt(v, 10, 64)
@@ -133,13 +258,53 @@ func ConvertToFloat64(value interface{}, defaultValue float64) (float64, error) 
 	}
 
 	switch v := value.(type) {
-	case int, int8, int16, int32, int64,
-		uint, uint8, uint16, uint32, uint64,
-		float32, float64:
-		c, ok := v.(float64)
-		if !ok {
-			return c, errors.New("Unable to convert value to float64")
-		}
+	case int:
+		data, _ := value.(int)
+		return float64(data), nil
+
+	case int8:
+		data, _ := value.(int8)
+		return float64(data), nil
+
+	case int16:
+		data, _ := value.(int16)
+		return float64(data), nil
+
+	case int32:
+		data, _ := value.(int32)
+		return float64(data), nil
+
+	case int64:
+		data, _ := value.(int64)
+		return float64(data), nil
+
+	case uint:
+		data, _ := value.(uint)
+		return float64(data), nil
+
+	case uint8:
+		data, _ := value.(uint8)
+		return float64(data), nil
+
+	case uint16:
+		data, _ := value.(uint16)
+		return float64(data), nil
+
+	case uint32:
+		data, _ := value.(uint32)
+		return float64(data), nil
+
+	case uint64:
+		data, _ := value.(uint64)
+		return float64(data), nil
+
+	case float32:
+		data, _ := value.(float32)
+		return float64(data), nil
+
+	case float64:
+		data, _ := value.(float64)
+		return float64(data), nil
 
 	case string:
 		return strconv.ParseFloat(v, 64)
