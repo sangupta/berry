@@ -4,6 +4,8 @@
 [![Code Coverage](https://codecov.io/gh/sangupta/berry/branch/main/graphs/badge.svg?branch=main)](https://codecov.io/gh/sangupta/berry)
 [![go.mod version](https://img.shields.io/github/go-mod/go-version/sangupta/berry.svg)](https://github.com/sangupta/berry)
 ![GitHub](https://img.shields.io/github/license/sangupta/berry)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sangupta/berry)](https://goreportcard.com/report/github.com/sangupta/berry)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/sangupta/berry)](https://pkg.go.dev/github.com/sangupta/berry)
 
 Utility functions in Go.
 
