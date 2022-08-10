@@ -141,10 +141,18 @@ func TestConvertToBool(t *testing.T) {
 	b, err = ConvertToBool(false)
 	assert.False(t, b)
 	assert.NoError(t, err)
+
+	// nil value
+	b, err = ConvertToBool(nil)
+	assert.False(t, b)
+	assert.NoError(t, err)
 }
 
 func TestConvertToString(t *testing.T) {
 	assert.Equal(t, "2", ConvertToString(2))
+
+	// nil
+	assert.Equal(t, "", ConvertToString(nil))
 }
 
 func TestConvertToUint64(t *testing.T) {
@@ -217,6 +225,11 @@ func TestConvertToUint64(t *testing.T) {
 	value, err = ConvertToUint64(strings.Builder{}, 0)
 	assert.Equal(t, uint64(0), value)
 	assert.NoError(t, err)
+
+	// nil
+	value, err = ConvertToUint64(nil, 3)
+	assert.Equal(t, uint64(3), value)
+	assert.NoError(t, err)
 }
 
 func TestConvertToInt64(t *testing.T) {
@@ -288,6 +301,11 @@ func TestConvertToInt64(t *testing.T) {
 
 	value, err = ConvertToInt64(strings.Builder{}, 0)
 	assert.Equal(t, int64(0), value)
+	assert.NoError(t, err)
+
+	// nil
+	value, err = ConvertToInt64(nil, 41)
+	assert.Equal(t, int64(41), value)
 	assert.NoError(t, err)
 }
 
@@ -362,5 +380,10 @@ func TestConvertToFloat64(t *testing.T) {
 
 	value, err = ConvertToFloat64(strings.Builder{}, 0)
 	assert.Equal(t, float64(0), value)
+	assert.NoError(t, err)
+
+	// nil
+	value, err = ConvertToFloat64(nil, 59)
+	assert.Equal(t, float64(59), value)
 	assert.NoError(t, err)
 }
